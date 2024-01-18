@@ -62,7 +62,7 @@ export default function RootLayout({ pageData, children }) {
           pageTitle={pageData.pageTitle}
           description={pageData.description}
           rightSideItems={pageData.rightSideItems}
-          tabs={pageData.tabs.map((tab, index) => ({
+          tabs={pageData.tabs?.map((tab, index) => ({
             ...tab,
             onClick: () => router.push(`/${tab.id}`)
           }))}
