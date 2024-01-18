@@ -5,19 +5,19 @@ export const DATA = {
   ],
   tabs: [
     {
-      id: 'overview',
+      id: '/overview',
       label: 'Overview',
     },
     {
-      id: 'documents',
+      id: '/documents',
       label: 'Documents',
     },
     {
-      id: 'mappings',
+      id: '/mappings',
       label: 'Mappings',
     },
     {
-      id: 'pipelines',
+      id: '/pipelines',
       label: 'Pipelines',
     },
   ]
