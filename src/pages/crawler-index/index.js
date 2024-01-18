@@ -10,29 +10,29 @@ export default function Overview() {
 
   const DATA = {
     pageTitle: "search-crawler",
+    rootSlug: 'api-index',
     rightSideItems: [
     ],
     tabs: [
       {
         label: 'Overview',
-        isSelected: true,
-        onClick: () => router.push('overview')
+        id: 'overview',
       },
       {
         label: 'Documents',
-        onClick: () => router.push('documents')
+        id: 'documents',
       },
       {
         label: 'Mappings',
-        onClick: () => router.push('/mappings')
+        id: 'mappings',
       },
       {
         label: 'Schedules',
-        onClick: () => router.push('/schedules')
+        id: 'schedules',
       },
       {
         label: 'Pipelines',
-        onClick: () => router.push('/pipelines')
+        id: 'pipelines'
       },
     ]
   }

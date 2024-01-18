@@ -36,7 +36,7 @@ export default function RootLayout({ pageData, children }) {
   ]
 
 
-  console.log(pageData)
+  console.log(router.pathname, pageData)
 
   return (
     <EuiProvider colorMode="light">
@@ -64,7 +64,8 @@ export default function RootLayout({ pageData, children }) {
           rightSideItems={pageData.rightSideItems}
           tabs={pageData.tabs?.map((tab, index) => ({
             ...tab,
-            onClick: () => router.push(`/${tab.id}`)
+            isSelected: router.pathname.includes(tab.id),
+            onClick: () => router.push(`/${pageData.rootSlug}/${tab.id}`)
           }))}
         />
         <EuiPageTemplate.Section>
