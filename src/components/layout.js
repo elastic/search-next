@@ -6,6 +6,10 @@ import {
   EuiHeaderLogo,
   EuiSideNav,
   htmlIdGenerator,
+  EuiTitle,
+  EuiIcon,
+  EuiFlexItem,
+  EuiFlexGroup,
 } from '@elastic/eui'
 
 
@@ -18,11 +22,6 @@ export default function RootLayout({ pageData, children }) {
 
   const sideNavItems = [
     {
-      name: 'Home',
-      id: htmlIdGenerator('basicExample')(),
-      onClick: () => router.push('/'),
-    },
-    {
       name: 'Content',
       id: htmlIdGenerator('basicExample')(),
       items: [
@@ -31,6 +30,59 @@ export default function RootLayout({ pageData, children }) {
           id: htmlIdGenerator('basicExample')(),
           onClick: () => router.push('/'),
         }
+      ]
+    },
+    {
+      name: 'Applications',
+      id: htmlIdGenerator('basicExample')(),
+      items: [
+        {
+          name: "Search Applications",
+          id: htmlIdGenerator('basicExample')(),
+          onClick: () => router.push('/'),
+        },
+        {
+          name: "Behavioral Analytics",
+          id: htmlIdGenerator('basicExample')(),
+          onClick: () => router.push('/'),
+        }
+      ]
+    },
+    {
+      name: 'Getting Started',
+      id: htmlIdGenerator('basicExample')(),
+      items: [
+        {
+          name: "Elasticsearch",
+          id: htmlIdGenerator('basicExample')(),
+          onClick: () => router.push('/'),
+        },
+        {
+          name: "Vector Search",
+          id: htmlIdGenerator('basicExample')(),
+          onClick: () => router.push('/'),
+        },
+        {
+          name: "AI Search",
+          id: htmlIdGenerator('basicExample')(),
+          onClick: () => router.push('/'),
+        }
+      ]
+    },
+    {
+      name: 'Enterprise Search',
+      id: htmlIdGenerator('basicExample')(),
+      items: [
+        {
+          name: "App Search",
+          id: htmlIdGenerator('basicExample')(),
+          onClick: () => router.push('/'),
+        },
+        {
+          name: "Workplace Search",
+          id: htmlIdGenerator('basicExample')(),
+          onClick: () => router.push('/'),
+        },
       ]
     },
   ]
@@ -56,7 +108,16 @@ export default function RootLayout({ pageData, children }) {
         panelled={true}
       >
         <EuiPageTemplate.Sidebar sticky>
-          <EuiSideNav items={sideNavItems} aria-label="Left nav" />
+          <EuiSideNav items={sideNavItems} aria-label="Left nav" heading={
+            <EuiFlexGroup alignItems="center" gutterSize="m">
+              <EuiFlexItem grow={false}>
+                <EuiIcon type="logoElasticsearch" />
+              </EuiFlexItem>
+              <EuiFlexItem>
+                <EuiTitle size="xs"><h2>Search</h2></EuiTitle>
+              </EuiFlexItem>
+            </EuiFlexGroup>
+          } />
         </EuiPageTemplate.Sidebar>
         <EuiPageTemplate.Header
           pageTitle={pageData.pageTitle}
