@@ -10,6 +10,12 @@ import {
   EuiIcon,
   htmlIdGenerator,
   EuiTitle,
+<<<<<<< HEAD
+=======
+  EuiIcon,
+  EuiFlexItem,
+  EuiFlexGroup,
+>>>>>>> d9283ac56042ce6160296e5359c1e33182eac653
 } from '@elastic/eui'
 
 
@@ -107,18 +113,30 @@ export default function RootLayout({ pageData, children }) {
         panelled={true}
       >
         <EuiPageTemplate.Sidebar sticky>
+<<<<<<< HEAD
           <EuiSideNav heading={
             <EuiFlexGroup alignItems='center' gutterSize='s'>
+=======
+          <EuiSideNav items={sideNavItems} aria-label="Left nav" heading={
+            <EuiFlexGroup alignItems="center" gutterSize="m">
+>>>>>>> d9283ac56042ce6160296e5359c1e33182eac653
               <EuiFlexItem grow={false}>
                 <EuiIcon type="logoElasticsearch" />
               </EuiFlexItem>
               <EuiFlexItem>
+<<<<<<< HEAD
                 <EuiTitle size="xs">
                   <h2>Search</h2>
                 </EuiTitle>
               </EuiFlexItem>
             </EuiFlexGroup>
           } items={sideNavItems} aria-label="Left nav" />
+=======
+                <EuiTitle size="xs"><h2>Search</h2></EuiTitle>
+              </EuiFlexItem>
+            </EuiFlexGroup>
+          } />
+>>>>>>> d9283ac56042ce6160296e5359c1e33182eac653
         </EuiPageTemplate.Sidebar>
         <EuiPageTemplate.Header
           pageTitle={pageData.pageTitle}
