@@ -13,7 +13,7 @@ export default function Overview() {
     <RootLayout
       pageData={DATA}
     >
-      Documents
+      Sync rules
     </RootLayout>
   )
 }
