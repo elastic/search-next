@@ -65,6 +65,7 @@ export default function Home() {
       <EuiText color="subdued">Table goes here</EuiText>
       <EuiButton onClick={() => router.push('/api-index/overview')}>API view</EuiButton>
       <EuiButton onClick={() => router.push('/crawler-index/')}>Crawler view</EuiButton>
+      <EuiButton onClick={() => router.push('/connectors/overview')}>Connectors view</EuiButton>
     </RootLayout>
   )
 }
