@@ -21,6 +21,20 @@ export const DATA = {
       id: 'pipelines',
       label: 'Pipelines',
     },
+  ],
+  panels: [
+    {
+      id: 'ingestion_type',
+      title: 'Ingestion type',
+      value: 'API',
+      isEditable: false,
+    },
+    {
+      id: 'document_count',
+      title: 'Document count',
+      value: 9984,
+      isEditable: false,
+    },
   ]
 }
 

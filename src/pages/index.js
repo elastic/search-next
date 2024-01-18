@@ -13,16 +13,8 @@ import {
   EuiStat,
 } from "@elastic/eui";
 
+import { StatPanel, StatPanels } from '../components';
 
-const StatPanel = ({ title, description }) => (
-  <EuiPanel color="subdued">
-    <EuiStat
-      titleSize="m"
-      title={title}
-      description={description}
-    />
-  </EuiPanel>
-)
 
 export default function Home() {
   const router = useRouter()
