@@ -1,4 +1,4 @@
-export const API_DATA = {
+export const DATA = {
 
   pageTitle: "search-mango",
   rightSideItems: [
