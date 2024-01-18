@@ -2,9 +2,14 @@ import React from 'react'
 import {
   EuiProvider,
   EuiHeader,
+  EuiFlexGroup,
+  EuiFlexItem,
   EuiPageTemplate,
   EuiHeaderLogo,
   EuiSideNav,
+  EuiText,
+  EuiTitle,
+  EuiIcon,
   htmlIdGenerator,
 } from '@elastic/eui'
 
@@ -56,7 +61,18 @@ export default function RootLayout({ pageData, children }) {
         panelled={true}
       >
         <EuiPageTemplate.Sidebar sticky>
-          <EuiSideNav items={sideNavItems} aria-label="Left nav" />
+          <EuiSideNav heading={
+            <EuiFlexGroup alignItems='center' gutterSize='s'>
+              <EuiFlexItem grow={false}>
+                <EuiIcon type="logoElasticsearch" />
+              </EuiFlexItem>
+              <EuiFlexItem>
+                <EuiTitle size="xs">
+                  <EuiText>Search</EuiText>
+                </EuiTitle>
+              </EuiFlexItem>
+            </EuiFlexGroup>
+          } items={sideNavItems} aria-label="Left nav" />
         </EuiPageTemplate.Sidebar>
         <EuiPageTemplate.Header
           pageTitle={pageData.pageTitle}
