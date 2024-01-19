@@ -4,7 +4,7 @@ import {
 
 } from '@elastic/eui'
 
-import RootLayout from '@/components/layout'
+import { RootLayout } from '@/components'
 import { DATA } from './data'
 
 export default function Overview() {
@@ -13,7 +13,7 @@ export default function Overview() {
     <RootLayout
       pageData={DATA}
     >
-      Overview
+      Pipelines
     </RootLayout>
   )
 }

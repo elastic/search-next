@@ -5,6 +5,7 @@ import {
 } from '@elastic/eui'
 
 import RootLayout from '@/components/layout'
+import { StatPanels } from '@/components';
 import { DATA } from './data'
 
 export default function Overview() {
@@ -13,7 +14,8 @@ export default function Overview() {
     <RootLayout
       pageData={DATA}
     >
-      Mappings
+      <StatPanels pageData={DATA} />
+      Index overview
     </RootLayout>
   )
 }

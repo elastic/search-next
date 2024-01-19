@@ -11,53 +11,59 @@ import {
   EuiPanel,
   EuiSpacer,
   EuiStat,
+  EuiHorizontalRule,
 } from "@elastic/eui";
 
-import { StatPanel, StatPanels } from '../components';
+const GetStartedPanel = ({ heading, description, slug }) => {
+  const router = useRouter();
+  return (
+    <EuiPanel hasBorder>
+      <EuiTitle size="s"><h4>{heading}</h4></EuiTitle>
+      <EuiSpacer size='s' />
+      <EuiText size="s" color="subdued">{description}</EuiText>
+      <EuiSpacer size='m' />
+      <EuiButton
+        style={{ width: "100%" }}
+        onClick={() => router.push(`${slug}`)}>Start</EuiButton>
+    </EuiPanel>
+  )
+}
+
+export default function GettingStarted() {
 
 
-export default function Home() {
-  const router = useRouter()
-
-  const HOME_DATA = {
-    pageTitle: "Elasticsearch indices",
+  const DATA = {
+    pageTitle: "Get started with Elasticsearch",
     rightSideItems: [
-      <EuiButton fill iconType="plusInCircle" onClick={() => router.push('./api-index/ingest')}>Create a new index</EuiButton>,
     ]
   }
   return (
-    <RootLayout pageData={HOME_DATA}>
-      <EuiFlexGroup gutterSize="m">
-        <EuiFlexItem>
-          <StatPanel title="8" description="Connected ingest methods" />
-        </EuiFlexItem>
-        <EuiFlexItem>
-          <StatPanel title="8" description="Incomplete ingest methods" />
-        </EuiFlexItem>
+    <RootLayout pageData={DATA}>
+      <EuiFlexGroup direction="column">
+        <EuiFlexItem><EuiTitle size="s"><h3>Ingest your content</h3></EuiTitle></EuiFlexItem>
+        <EuiFlexGroup>
+          <EuiFlexItem>
+            <GetStartedPanel
+              heading="API"
+              description="Add documents programmatically by connecting with the API using your preferred language client."
+              slug="./content/api-index/overview" />
+          </EuiFlexItem>
+          <EuiFlexItem>
+            <GetStartedPanel
+              heading="Connectors"
+              description="Extract, transform, index and sync data from a third-party data source."
+              slug="./content/connectors/overview" />
+          </EuiFlexItem>
+          <EuiFlexItem>
+            <GetStartedPanel
+              heading="Web Crawlers"
+              description="Discover, extract, and index searchable content from websites and knowledge bases."
+              slug="./content/crawlers/overview" />
+          </EuiFlexItem>
+        </EuiFlexGroup>
       </EuiFlexGroup>
 
-      <EuiSpacer size="m" />
-      <EuiFlexGroup gutterSize="m">
-        <EuiFlexItem>
-          <StatPanel title="8" description="Running syncs" />
-        </EuiFlexItem>
-        <EuiFlexItem>
-          <StatPanel title="8" description="Idle syncs" />
-        </EuiFlexItem>
-        <EuiFlexItem>
-          <StatPanel title="8" description="Orpahned syncs" />
-        </EuiFlexItem>
-        <EuiFlexItem>
-          <StatPanel title="8" description="Sync errors" />
-        </EuiFlexItem>
-      </EuiFlexGroup>
 
-      <EuiSpacer size="l" />
-      <EuiTitle size="m"><h1>Available indices</h1></EuiTitle>
-      <EuiText color="subdued">Table goes here</EuiText>
-      <EuiButton onClick={() => router.push('/api-index/overview')}>API view</EuiButton>
-      <EuiButton onClick={() => router.push('/crawlers/overview')}>Crawler view</EuiButton>
-      <EuiButton onClick={() => router.push('/connectors/overview')}>Connectors view</EuiButton>
     </RootLayout>
   )
 }
