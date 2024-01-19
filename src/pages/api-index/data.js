@@ -2,6 +2,7 @@ export const DATA = {
 
   pageTitle: "search-mango",
   rootSlug: 'api-index',
+  showBreadcrumb: true,
   rightSideItems: [
   ],
   tabs: [

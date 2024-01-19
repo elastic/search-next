@@ -24,7 +24,7 @@ export default function RootLayout({ pageData, children }) {
   const sideNavItems = [
     {
       name: 'Content',
-      id: htmlIdGenerator('basicExample')(),
+      id: 'content',
       items: [
         {
           name: "Indices",
@@ -35,61 +35,59 @@ export default function RootLayout({ pageData, children }) {
     },
     {
       name: 'Applications',
-      id: htmlIdGenerator('basicExample')(),
+      id: 'applications',
       items: [
         {
           name: "Search Applications",
-          id: htmlIdGenerator('basicExample')(),
+          id: 'search-applications',
           onClick: () => router.push('/'),
         },
         {
           name: "Behavioral Analytics",
-          id: htmlIdGenerator('basicExample')(),
+          id: 'behavioral-analytics',
           onClick: () => router.push('/'),
         }
       ]
     },
     {
       name: 'Getting Started',
-      id: htmlIdGenerator('basicExample')(),
+      id: 'getting-started',
       items: [
         {
           name: "Elasticsearch",
-          id: htmlIdGenerator('basicExample')(),
+          id: 'gs-elasticsearch',
           onClick: () => router.push('/'),
         },
         {
           name: "Vector Search",
-          id: htmlIdGenerator('basicExample')(),
+          id: 'gs-vector-search',
           onClick: () => router.push('/'),
         },
         {
           name: "AI Search",
-          id: htmlIdGenerator('basicExample')(),
+          id: 'gs-ai-search',
           onClick: () => router.push('/'),
         }
       ]
     },
     {
       name: 'Enterprise Search',
-      id: htmlIdGenerator('basicExample')(),
+      id: 'enterprise-search',
       items: [
         {
           name: "App Search",
-          id: htmlIdGenerator('basicExample')(),
+          id: 'app-search',
           onClick: () => router.push('/'),
         },
         {
           name: "Workplace Search",
-          id: htmlIdGenerator('basicExample')(),
+          id: 'workplace-search',
           onClick: () => router.push('/'),
         },
       ]
     },
   ]
 
-
-  console.log(router.pathname, pageData)
 
   return (
     <EuiProvider colorMode="light">
@@ -124,6 +122,18 @@ export default function RootLayout({ pageData, children }) {
           pageTitle={pageData.pageTitle}
           description={pageData.description}
           rightSideItems={pageData.rightSideItems}
+          breadcrumbs={pageData.showBreadcrumb && [
+            {
+              text: (
+                <>
+                  <EuiIcon size="s" type="arrowLeft" /> Return
+                </>
+              ),
+              color: 'primary',
+              'aria-current': false,
+              onClick: () => router.push('/'),
+            },
+          ]}
           tabs={pageData.tabs?.map((tab, index) => ({
             ...tab,
             isSelected: router.pathname.includes(tab.id),

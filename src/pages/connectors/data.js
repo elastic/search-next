@@ -1,7 +1,14 @@
+import React from 'react'
+import { EuiButton } from '@elastic/eui'
+
+
 export const DATA = {
   pageTitle: "search-connector",
   rootSlug: 'connectors',
+  showBreadcrumb: true,
   rightSideItems: [
+    <EuiButton fill iconSide='right' iconType='arrowDown'>Sync</EuiButton>,
+    <EuiButton iconSide='right' iconType='arrowDown' >Search Applications</EuiButton>
   ],
   tabs: [
     {

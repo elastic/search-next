@@ -1,6 +1,7 @@
 export const DATA = {
   pageTitle: "search-crawler",
-  rootSlug: 'api-index',
+  rootSlug: 'crawlers',
+  showBreadcrumb: true,
   rightSideItems: [
   ],
   tabs: [
@@ -17,12 +18,20 @@ export const DATA = {
       id: 'mappings',
     },
     {
+      label: 'Domains',
+      id: 'domains',
+    },
+    {
       label: 'Schedules',
       id: 'schedules',
     },
     {
       label: 'Pipelines',
       id: 'pipelines'
+    },
+    {
+      label: 'Configuration',
+      id: 'configuration'
     },
   ],
   panels: [
