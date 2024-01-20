@@ -7,15 +7,16 @@ import { RootLayout } from '@/components'
 import { DATA } from './data';
 import { StatPanels } from '@/components';
 
-export default function Overview() {
+export default function Schedules() {
 
   return (
     <RootLayout
       pageData={DATA}
     >
       <StatPanels pageData={DATA} />
-      Crawler overview
+      Scheduling
     </RootLayout>
   )
 }
+
 

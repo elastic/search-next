@@ -137,7 +137,7 @@ export default function RootLayout({ pageData, children }) {
           tabs={pageData.tabs?.map((tab, index) => ({
             ...tab,
             isSelected: router.pathname.includes(tab.id),
-            onClick: () => router.push(`/${pageData.rootSlug}/${tab.id}`)
+            onClick: () => router.push(`/content/${pageData.rootSlug}/${tab.id}`)
           }))}
         />
         <EuiPageTemplate.Section>

@@ -1,8 +1,24 @@
+import { EuiButton } from '@elastic/eui';
+
 export const DATA = {
   pageTitle: "search-crawler",
   rootSlug: 'crawlers',
   showBreadcrumb: true,
   rightSideItems: [
+    <EuiButton
+      fill
+      iconType="arrowDown"
+      iconSide="right"
+    >
+      Crawl
+    </EuiButton>,
+    <EuiButton
+      iconType="arrowDown"
+      iconSide="right"
+    >
+      Search Applications
+    </EuiButton>,
+
   ],
   tabs: [
     {

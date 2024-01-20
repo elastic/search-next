@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-import RootLayout from '@/components/layout';
+import { RootLayout } from '@/components';
 import {
   EuiButton,
   EuiText,
