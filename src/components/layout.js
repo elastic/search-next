@@ -28,8 +28,9 @@ export default function RootLayout({ pageData, children }) {
       items: [
         {
           name: "Indices",
+          isSelected: router.pathname.includes('content'),
           id: htmlIdGenerator('basicExample')(),
-          onClick: () => router.push('/'),
+          onClick: () => router.push('/content/'),
         }
       ]
     },

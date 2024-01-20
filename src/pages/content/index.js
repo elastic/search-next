@@ -1,7 +1,6 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
-import RootLayout from '@/components/layout';
 import {
   EuiButton,
   EuiText,
@@ -13,8 +12,7 @@ import {
   EuiStat,
 } from "@elastic/eui";
 
-import { StatPanel, StatPanels } from '../components';
-
+import { RootLayout, StatPanel, StatPanels } from '@/components';
 
 export default function Home() {
   const router = useRouter()
