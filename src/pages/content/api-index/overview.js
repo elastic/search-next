@@ -4,7 +4,7 @@ import {
 
 } from '@elastic/eui'
 
-import RootLayout from '@/components/layout'
+import { RootLayout } from '@/components'
 import { StatPanels } from '@/components';
 import { DATA } from './data'
 

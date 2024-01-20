@@ -1,7 +1,5 @@
 import React from 'react'
-
 import {
-
 } from '@elastic/eui'
 
 import { RootLayout } from '@/components'
