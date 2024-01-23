@@ -132,10 +132,10 @@ export default function RootLayout({ pageData, children }) {
               ),
               color: 'primary',
               'aria-current': false,
-              onClick: () => router.push('/'),
+              onClick: () => router.push('/content/'),
             },
           ]}
-          tabs={pageData.tabs?.map((tab, index) => ({
+          tabs={pageData.tabs?.map((tab) => ({
             ...tab,
             isSelected: router.pathname.includes(tab.id),
             onClick: () => router.push(`/content/${pageData.rootSlug}/${tab.id}`)
