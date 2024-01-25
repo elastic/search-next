@@ -12,7 +12,7 @@ import {
   EuiStat,
 } from "@elastic/eui";
 
-import { RootLayout, StatPanel, StatPanels } from '@/components';
+import { RootLayout, StatPanel, StatPanels, TableIndices } from '@/components';
 
 export default function Home() {
   const router = useRouter()
@@ -33,7 +33,6 @@ export default function Home() {
           <StatPanel title="8" description="Incomplete ingest methods" />
         </EuiFlexItem>
       </EuiFlexGroup>
-
       <EuiSpacer size="m" />
       <EuiFlexGroup gutterSize="m">
         <EuiFlexItem>
@@ -52,10 +51,7 @@ export default function Home() {
 
       <EuiSpacer size="l" />
       <EuiTitle size="m"><h1>Available indices</h1></EuiTitle>
-      <EuiText color="subdued">Table goes here</EuiText>
-      <EuiButton onClick={() => router.push('/content/api-index/overview')}>API view</EuiButton>
-      <EuiButton onClick={() => router.push('/content/crawlers/overview')}>Crawler view</EuiButton>
-      <EuiButton onClick={() => router.push('/content/connectors/overview')}>Connectors view</EuiButton>
+      <TableIndices />
     </RootLayout>
   )
 }

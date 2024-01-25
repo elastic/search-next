@@ -1,7 +1,6 @@
-import RootLayout from './layout';
-import { MappingView } from './mappingView/';
-
-export { StatPanel, StatPanels } from './panels';
-export { RootLayout, MappingView };
+export { RootLayout } from './RootLayout';
+export { MappingView } from './MappingView/MappingView';
+export { TableIndices } from './TableIndices/TableIndices';
+export { StatPanel, StatPanels } from './Panels';
 
 // TODO: Feels like this could be cleaned up--I don't think I'm doing this right...

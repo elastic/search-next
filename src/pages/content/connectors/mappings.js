@@ -4,7 +4,7 @@ import {
 
 } from '@elastic/eui'
 
-import { MappingTable, RootLayout } from '@/components'
+import { MappingView, RootLayout } from '@/components'
 import { DATA } from './data'
 
 export default function Overview() {
@@ -13,7 +13,7 @@ export default function Overview() {
     <RootLayout
       pageData={DATA}
     >
-      <MappingTable />
+      <MappingView />
     </RootLayout>
   )
 }

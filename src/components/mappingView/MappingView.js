@@ -14,8 +14,8 @@ import {
   EuiSearchBar,
 } from '@elastic/eui';
 
-import { PendingFields } from './PendingFields';
-import { MappingTable } from './MappingTable';
+import { PendingFields } from './MappingView.PendingFields';
+import { MappingTable } from './MappingView.Table';
 
 
 const MappingView = () => {
@@ -110,21 +110,6 @@ const MappingView = () => {
             }
           ]}
         />
-        {/* <EuiFilterGroup> */}
-        {/*   <EuiFilterButton */}
-        {/*     withNext */}
-        {/*     hasActiveFilters={isTableView} */}
-        {/*     onClick={toggleTableFilter} */}
-        {/*   > */}
-        {/*     Table */}
-        {/*   </EuiFilterButton> */}
-        {/*   <EuiFilterButton */}
-        {/*     hasActiveFilters={isJSONView} */}
-        {/*     onClick={toggleJSONFilter} */}
-        {/*   > */}
-        {/*     JSON */}
-        {/*   </EuiFilterButton> */}
-        {/* </EuiFilterGroup> */}
 
       </EuiFlexItem>
       <EuiFlexItem>

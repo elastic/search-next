@@ -1,4 +1,7 @@
 import React from 'react'
+import { useRouter } from 'next/router'
+import { useSearchParams } from 'next/navigation'
+
 import {
   EuiProvider,
   EuiHeader,
@@ -15,9 +18,8 @@ import {
 
 
 import '@elastic/eui/dist/eui_theme_light.css';
-import { useRouter } from 'next/router'
 
-export default function RootLayout({ pageData, children }) {
+const RootLayout = ({ pageData, children }) => {
 
   const router = useRouter()
 
@@ -87,8 +89,27 @@ export default function RootLayout({ pageData, children }) {
         },
       ]
     },
+    {
+      name: 'Settings',
+      id: 'settings',
+      items: [
+        {
+          name: "Trained Models",
+          id: 'trained-models',
+          onClick: () => router.push('/trained-models'),
+        },
+        {
+          name: "Synonyms",
+          id: 'synonyms',
+          onClick: () => router.push('/'),
+        },
+      ]
+    },
   ]
 
+  const searchParams = useSearchParams()
+
+  const urlPageTitle = searchParams.get('title');
 
   return (
     <EuiProvider colorMode="light">
@@ -120,7 +141,7 @@ export default function RootLayout({ pageData, children }) {
           } />
         </EuiPageTemplate.Sidebar>
         <EuiPageTemplate.Header
-          pageTitle={pageData.pageTitle}
+          pageTitle={urlPageTitle != null ? urlPageTitle : pageData.pageTitle}
           description={pageData.description}
           rightSideItems={pageData.rightSideItems}
           breadcrumbs={pageData.showBreadcrumb && [
@@ -150,3 +171,4 @@ export default function RootLayout({ pageData, children }) {
   )
 }
 
+export { RootLayout }
