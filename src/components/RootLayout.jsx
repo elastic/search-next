@@ -16,7 +16,6 @@ import {
   htmlIdGenerator,
 } from '@elastic/eui'
 
-
 import '@elastic/eui/dist/eui_theme_light.css';
 
 const RootLayout = ({ pageData, children }) => {

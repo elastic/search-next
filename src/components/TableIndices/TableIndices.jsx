@@ -6,6 +6,8 @@ import {
   EuiBasicTable,
   EuiButton,
   EuiLink,
+  EuiSearchBar,
+  EuiSpacer,
 } from '@elastic/eui';
 
 
@@ -69,10 +71,10 @@ const TableIndices = () => {
 
   return (
     <>
-      {/* Indices Table */}
-      {/* <EuiButton onClick={() => router.push('/content/api-index/overview')}>API view</EuiButton> */}
-      {/* <EuiButton onClick={() => router.push('/content/crawlers/overview')}>Crawler view</EuiButton> */}
-      {/* <EuiButton onClick={() => router.push('/content/connectors/overview')}>Connectors view</EuiButton> */}
+      <EuiSearchBar
+        query={''}
+      />
+      <EuiSpacer size="m" />
       <EuiBasicTable
         items={ITEMS}
         columns={columns}

@@ -3,16 +3,16 @@ import { useRouter } from 'next/router';
 
 import {
   EuiButton,
-  EuiText,
-  EuiTitle,
   EuiFlexGroup,
   EuiFlexItem,
-  EuiPanel,
   EuiSpacer,
-  EuiStat,
 } from "@elastic/eui";
 
-import { RootLayout, StatPanel, StatPanels, TableIndices } from '@/components';
+import {
+  RootLayout,
+  StatPanel,
+  TableIndices
+} from '@/components';
 
 export default function Home() {
   const router = useRouter()
@@ -20,7 +20,7 @@ export default function Home() {
   const HOME_DATA = {
     pageTitle: "Elasticsearch indices",
     rightSideItems: [
-      <EuiButton fill iconType="plusInCircle" onClick={() => router.push('./api-index/ingest')}>Create a new index</EuiButton>,
+      <EuiButton fill iconType="plusInCircle" onClick={() => router.push('./content/ingest')}>Create a new index</EuiButton>,
     ]
   }
   return (
@@ -50,7 +50,6 @@ export default function Home() {
       </EuiFlexGroup>
 
       <EuiSpacer size="l" />
-      <EuiTitle size="m"><h1>Available indices</h1></EuiTitle>
       <TableIndices />
     </RootLayout>
   )
