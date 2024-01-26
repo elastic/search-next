@@ -140,7 +140,7 @@ const RootLayout = ({ pageData, children }) => {
           } />
         </EuiPageTemplate.Sidebar>
         <EuiPageTemplate.Header
-          pageTitle={urlPageTitle != null ? urlPageTitle : pageData.pageTitle}
+          pageTitle={searchParams.has("title") ? searchParams.get("title") : pageData.pageTitle}
           description={pageData.description}
           rightSideItems={pageData.rightSideItems}
           breadcrumbs={pageData.showBreadcrumb && [

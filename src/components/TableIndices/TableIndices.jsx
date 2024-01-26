@@ -1,5 +1,5 @@
 // Main table for content sources
-import React from 'react'
+import React, { useState } from 'react'
 import { useRouter } from 'next/router';
 
 import {
@@ -12,68 +12,25 @@ import {
   EuiSpacer,
 } from '@elastic/eui';
 
+import { slugify } from '@/utils/helpers';
+import { INDEX_TABLE_ITEMS } from '@/data/indexTableItem';
 
 
-const ITEMS = [
-  {
-    id: '01',
-    name: 'Banana',
-    type: 'api',
-    health: true,
-    connected: true,
-    docsCount: 280,
-  },
-  {
-    id: '02',
-    name: 'Apple',
-    type: 'api',
-    health: true,
-    connected: true,
-    docsCount: 9438,
-  },
-  {
-    id: '03',
-    name: 'Mango',
-    type: 'crawler',
-    health: true,
-    connected: true,
-    docsCount: 2938,
-  },
-  {
-    id: '04',
-    name: 'Orange',
-    type: 'api',
-    health: true,
-    connected: true,
-    docsCount: 84,
-  },
-  {
-    id: '05',
-    name: 'Papaya',
-    type: 'connector',
-    health: false,
-    connected: true,
-    docsCount: 3020,
-  },
-  {
-    id: '06',
-    name: 'Pineapple',
-    type: 'crawler',
-    health: true,
-    connected: true,
-    docsCount: 1048,
-  },
-]
 
 const TableIndices = () => {
+  const [pageIndex, setPageIndex] = useState(0);
+  const [pageSize, setPageSize] = useState(25);
+
   const router = useRouter();
 
-  const viewIndex = (index) => {
-    console.log(index)
+  const viewIndex = (item) => {
+    router.push(`${slugify(item.type)}/overview?title=${item.name}`)
   }
-  const deleteIndex = (index) => {
-    console.log(index)
+
+  const deleteIndex = (item) => {
+    console.log(item)
   }
+
 
   const columns = [
 
@@ -81,21 +38,9 @@ const TableIndices = () => {
       field: 'name',
       name: 'Name',
       'data-test-subj': 'nameCell',
-      render: (name, entry) => {
-
-        let slug;
-
-        if (entry.type === "connector") {
-          slug = 'connectors';
-        } else if (entry.type === "crawler") {
-          slug = 'crawlers'
-        } else {
-          slug = 'api-index'
-        }
-
-
+      render: (name, item) => {
         return (
-          <EuiLink onClick={() => router.push(`/content/${slug}/overview?title=${name}`)}>
+          <EuiLink onClick={() => viewIndex(item)}>
             {name}
           </EuiLink>
         )
@@ -163,7 +108,7 @@ const TableIndices = () => {
       />
       <EuiSpacer size="m" />
       <EuiBasicTable
-        items={ITEMS}
+        items={INDEX_TABLE_ITEMS}
         columns={columns}
       />
     </>
