@@ -13,7 +13,7 @@ import {
 } from '@elastic/eui';
 
 import { slugify } from '@/utils/helpers';
-import { INDEX_TABLE_ITEMS } from '@/data/indexTableItem';
+import { INDEX_TABLE_ITEMS } from '@/data/indexTableItems';
 
 
 

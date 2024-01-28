@@ -6,7 +6,7 @@ import {
   EuiText
 } from '@elastic/eui';
 
-const MappingTable = () => {
+const MappingViewTable = () => {
 
   return (
     <>
@@ -16,4 +16,4 @@ const MappingTable = () => {
 
 }
 
-export { MappingTable }
+export { MappingViewTable }

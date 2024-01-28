@@ -15,7 +15,7 @@ import {
 } from '@elastic/eui';
 
 import { PendingFields } from './MappingView.PendingFields';
-import { MappingTable } from './MappingView.Table';
+import { MappingViewTable } from './MappingView.Table';
 
 
 const MappingView = () => {
@@ -116,7 +116,7 @@ const MappingView = () => {
         <PendingFields />
       </EuiFlexItem>
       <EuiFlexItem>
-        <MappingTable />
+        <MappingViewTable />
       </EuiFlexItem>
 
     </EuiFlexGroup>
