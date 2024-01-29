@@ -13,7 +13,6 @@ import {
   EuiPopover,
   EuiText
 } from '@elastic/eui';
-import { faker } from '@faker-js/faker';
 
 // Field object
 //----
@@ -53,7 +52,7 @@ const FIELD_DATA = [
     id: faker.string.uuid(),
     field_name: "summary",
     field_type: "string",
-    doc_count: faker.number.int({ min: 0, max: 1000 }),
+    doc_count: faker.number.int(DOC_COUNT_OPTIONS),
     in_index: true,
   },
   {
@@ -79,7 +78,7 @@ const MappingViewTable = () => {
       id: faker.string.uuid(),
       field_name: "summary.semantic_text",
       field_type: "semantic_text",
-      doc_count: faker.number.int({ min: 0, max: 1000 }),
+      doc_count: 0,
       in_index: false,
     },
     ...FIELD_DATA.slice(INDEX_LOC)

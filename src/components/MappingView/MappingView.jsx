@@ -1,27 +1,25 @@
 import React, { useState } from 'react';
 
 import {
-  EuiAccordion,
   EuiButton,
+  EuiBasicTable,
   EuiFlexGroup,
   EuiFlexItem,
-  EuiFilterGroup,
-  EuiFilterButton,
-  EuiHealth,
-  EuiPanel,
+  EuiIcon,
+  EuiPopover,
   EuiText,
   EuiSpacer,
   EuiSearchBar,
 } from '@elastic/eui';
 
 import { PendingFields } from './MappingView.PendingFields';
-import { MappingViewTable } from './MappingView.Table';
-
+import { fields, updatedFields } from '@/data/fieldMappings';
 
 const MappingView = () => {
   const [isTableView, setIsTableView] = useState(true);
   const [isJSONView, setIsJSONView] = useState(false);
-
+  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const [fieldData, setFieldData] = useState(fields);
 
   const toggleTableFilter = () => {
     setIsTableView(!isTableView);
@@ -33,29 +31,62 @@ const MappingView = () => {
     setIsTableView(!isTableView);
   }
 
-  const initialQuery = EuiSearchBar.Query.MATCH_ALL;
-
-
-  const types = [
-    { name: 'string', color: 'danger' },
-    { name: 'number', color: 'success' },
-    { name: 'boolean', color: 'success' },
-    { name: 'semantic_text', color: 'warning' },
-    { name: 'geo', color: 'success' },
-  ];
-
-  const loadTypes = () => {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve(
-          types.map((type) => ({
-            value: type.name,
-            view: <EuiHealth color={type.color}>{type.name}</EuiHealth>,
-          }))
-        );
-      }, 100);
-    });
+  const handleActionClick = () => {
+    setIsPopoverOpen((isPopoverOpen) => !isPopoverOpen);
   };
+
+  const handleSemanticClick = () => {
+    setFieldData(updatedFields)
+  }
+
+  const closePopover = () => {
+    setIsPopoverOpen(false);
+  }
+
+  const columns = [
+    {
+      field: 'field_name',
+      name: 'Field Name',
+      render: (value) => {
+        if (value === 'summary' && !!fieldData) {
+          return (
+            <EuiPopover
+              button={<EuiButton size="s" color="success" iconSide='right' iconType='sparkles' onClick={handleActionClick}>{value}</EuiButton>}
+              isOpen={isPopoverOpen}
+              closePopover={closePopover}
+            >
+              <EuiText>
+                <p>Popover content that&rsquo;s wider than the default width</p>
+              </EuiText>
+              <EuiButton onClick={handleSemanticClick}>Add semantic_text</EuiButton>
+            </EuiPopover>)
+        } else {
+          return <EuiText size='s'>{value}</EuiText>
+        }
+      }
+    },
+    {
+      field: 'field_type',
+      name: 'Field Type',
+      width: "180px",
+    },
+    {
+      field: 'doc_count',
+      name: 'Documents',
+      width: "160px",
+    },
+    {
+      field: 'in_index',
+      name: 'Indexed',
+      width: "120px",
+      render: (field) => (
+        <>
+          <EuiIcon color={field ? "success" : "danger"} type={field ? "checkInCircleFilled" : 'error'} />
+        </>
+      )
+    },
+  ]
+
 
   return (
     <EuiFlexGroup gutterSize="m" direction="column">
@@ -64,10 +95,13 @@ const MappingView = () => {
         <EuiSearchBar />
       </EuiFlexItem>
       <EuiFlexItem>
-        <PendingFields />
+        {fieldData === updatedFields && <PendingFields />}
       </EuiFlexItem>
       <EuiFlexItem>
-        <MappingViewTable />
+        <EuiBasicTable
+          columns={columns}
+          items={fieldData}
+        />
       </EuiFlexItem>
 
     </EuiFlexGroup>
