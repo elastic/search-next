@@ -35,31 +35,6 @@ const MappingView = () => {
 
   const initialQuery = EuiSearchBar.Query.MATCH_ALL;
 
-  const items = [
-    {
-      id: "01",
-      type: "string",
-      name: "Field A"
-    },
-    {
-      id: "02",
-      type: "boolean",
-      name: "Field B"
-    },
-    {
-      id: "03",
-      type: "semantic_text",
-      name: "Field C"
-    },
-    {
-      id: "04",
-      type: "string",
-      name: "Field D"
-    }
-
-
-
-  ]
 
   const types = [
     { name: 'string', color: 'danger' },
@@ -86,31 +61,7 @@ const MappingView = () => {
     <EuiFlexGroup gutterSize="m" direction="column">
 
       <EuiFlexItem>
-        <EuiSearchBar
-          defaultQuery={initialQuery}
-          box={{
-            placeholder: 'type:semantic_text',
-            incremental: false,
-            schema: {
-              strict: true,
-              fields: {
-                type: { type: 'string' },
-                name: { type: 'string' },
-              },
-            }
-          }}
-          filters={[
-            {
-              type: 'field_value_selection',
-              field: 'type',
-              name: 'Tag',
-              multiSelect: 'or',
-              operator: 'exact',
-              options: () => loadTypes(),
-            }
-          ]}
-        />
-
+        <EuiSearchBar />
       </EuiFlexItem>
       <EuiFlexItem>
         <PendingFields />
