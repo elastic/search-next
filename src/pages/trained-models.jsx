@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
-
+  EuiFlexGroup,
+  EuiFlexItem,
+  EuiPanel,
+  EuiSearchBar
 } from '@elastic/eui'
 
-import { RootLayout } from '@/components'
+import { ModelTable, RootLayout } from '@/components'
 
 const DATA = {
   pageTitle: "Trained Models",
@@ -14,13 +17,27 @@ const DATA = {
   ],
 }
 
+
 export default function Overview() {
+
 
   return (
     <RootLayout
       pageData={DATA}
     >
-      Trained Models
+      <EuiFlexGroup gutterSize="l" direction='column'>
+        <EuiFlexItem grow={false}>
+          <EuiPanel color='subdued' grow={false}>
+            Total trained models: <strong>{}</strong>
+          </EuiPanel>
+        </EuiFlexItem>
+        <EuiFlexItem>
+          <EuiSearchBar query="" />
+        </EuiFlexItem>
+        <EuiFlexItem>
+          <ModelTable />
+        </EuiFlexItem>
+      </EuiFlexGroup>
     </RootLayout>
   )
 }
