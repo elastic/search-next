@@ -19,6 +19,8 @@ import {
   EuiButtonEmpty
 } from "@elastic/eui";
 
+import { CONNECTOR_ICONS } from '../../../components/icons/connector_icons';
+
 import { RootLayout } from "@/components";
 import { DATA } from "./data";
 
@@ -89,7 +91,7 @@ const Configuration = () => {
           <EuiPanel hasShadow={false} hasBorder>
             <EuiFlexGroup gutterSize="m" direction="row" alignItems="center">
               <EuiFlexItem grow={false}>
-                <EuiIcon size="xl" type="logoElasticsearch" />
+                <EuiIcon size="xl" type={CONNECTOR_ICONS.azure_blob_storage} />
               </EuiFlexItem>
               <EuiFlexItem grow={false}>
                 <EuiTitle size="s">
