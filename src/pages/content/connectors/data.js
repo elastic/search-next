@@ -36,7 +36,7 @@ export const DATA = {
       label: 'Pipelines',
     },
     {
-      id: 'configuration',
+      id: 'configuration?isBeta=true?notEnterpiseSearch=true?isNatieveConnector=true',
       label: 'Configuration',
     },
   ]

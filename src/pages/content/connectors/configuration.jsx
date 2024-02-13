@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import {
   EuiFlexGroup,
@@ -16,13 +16,15 @@ import {
   EuiSelect,
   useGeneratedHtmlId,
   EuiFieldText,
-  EuiButtonEmpty
+  EuiButtonEmpty,
 } from "@elastic/eui";
 
-import { CONNECTOR_ICONS } from '../../../components/icons/connector_icons';
+import { CONNECTOR_ICONS } from "../../../components/icons/connector_icons";
 
 import { RootLayout } from "@/components";
 import { DATA } from "./data";
+import { usePathname, useSearchParams } from "next/navigation";
+import { useRouter } from "next/router";
 
 const Configuration = () => {
   const optionsStatic = [
@@ -58,6 +60,8 @@ const Configuration = () => {
     setSelected(selectedOptions);
   };
 
+  const searchParams = useSearchParams();
+
   const onCreateOption = (searchValue, flattenedOptions = []) => {
     const normalizedSearchValue = searchValue.trim().toLowerCase();
 
@@ -82,6 +86,26 @@ const Configuration = () => {
     setSelected([...selectedOptions, newOption]);
   };
 
+  const createQueryString = useCallback(
+    (name, value) => {
+      const params = new URLSearchParams(searchParams);
+      params.set(name, value);
+
+      return params.toString();
+    },
+    [searchParams]
+  );
+
+  const pathname = usePathname();
+  const router = useRouter();
+
+  useEffect(() => {
+    // router
+    //   .push
+    //   pathname + "?" + createQueryString("isBeta", "true")
+    //   ();
+  });
+
   return (
     <RootLayout pageData={DATA}>
       <EuiSpacer />
@@ -100,18 +124,22 @@ const Configuration = () => {
               </EuiFlexItem>
             </EuiFlexGroup>
             <EuiSpacer />
-            <EuiCallOut
-              color="warning"
-              size="m"
-              title="No running Enterprise Search instance detected"
-              iconType="warning"
-            >
-              <p>
-                Native connectors require a running Enterprise Search instance
-                to sync content from source
-              </p>
-            </EuiCallOut>
-            <EuiSpacer />
+            {searchParams.has("noEnterpriseSearch") && (
+              <>
+                <EuiCallOut
+                  color="warning"
+                  size="m"
+                  title="No running Enterprise Search instance detected"
+                  iconType="warning"
+                >
+                  <p>
+                    Native connectors require a running Enterprise Search
+                    instance to sync content from source
+                  </p>
+                </EuiCallOut>
+                <EuiSpacer />
+              </>
+            )}
             <EuiPanel hasShadow={false} hasBorder>
               <EuiCallOut
                 color="primary"
@@ -172,7 +200,7 @@ const Configuration = () => {
               <EuiSpacer />
               <EuiFlexGroup gutterSize="s">
                 <EuiFlexItem grow={false}>
-                  <EuiButton >Save configuration</EuiButton>
+                  <EuiButton>Save configuration</EuiButton>
                 </EuiFlexItem>
                 <EuiFlexItem grow={false}>
                   <EuiButtonEmpty>Cancel</EuiButtonEmpty>
@@ -303,53 +331,63 @@ const Configuration = () => {
                 </EuiText>
               </EuiPanel>
             </EuiFlexItem>
-            <EuiFlexItem grow={false}>
-              <EuiPanel hasBorder hasShadow={false}>
-                <EuiFlexGroup
-                  direction="row"
-                  alignItems="center"
-                  gutterSize="s"
-                >
-                  <EuiFlexItem grow={false}>
-                    <EuiIcon type="wrench" />
-                  </EuiFlexItem>
-                  <EuiFlexItem>
-                    <EuiTitle size="xs">
-                      <h3>Self-manage this connector</h3>
-                    </EuiTitle>
-                  </EuiFlexItem>
-                </EuiFlexGroup>
-                <EuiSpacer size="s" />
-                <EuiText size="s">
-                  Want to self-host this native connector? Convert it to a{" "}
-                  <EuiLink href="#" target="_blank">
-                    connector client
-                  </EuiLink>
-                  , to be self-managed on your own infrastructure. You ll need
-                  to convert this connector if you want to customize the code
-                  using our Python framework
+            {searchParams.has("isNativeConnector") && (
+              <EuiFlexItem grow={false}>
+                <EuiPanel hasBorder hasShadow={false}>
+                  <EuiFlexGroup
+                    direction="row"
+                    alignItems="center"
+                    gutterSize="s"
+                  >
+                    <EuiFlexItem grow={false}>
+                      <EuiIcon type="wrench" />
+                    </EuiFlexItem>
+                    <EuiFlexItem>
+                      <EuiTitle size="xs">
+                        <h3>Self-manage this connector</h3>
+                      </EuiTitle>
+                    </EuiFlexItem>
+                  </EuiFlexGroup>
                   <EuiSpacer size="s" />
-                  <EuiButton onClick={() => console.log("Convert")}>
-                    Convert connector
-                  </EuiButton>
-                </EuiText>
-              </EuiPanel>
-            </EuiFlexItem>
-
-            <EuiFlexItem grow={false}>
-              <EuiPanel hasBorder hasShadow={false}>
-                <EuiCallOut
-                  color="warning"
-                  iconType="beaker"
-                  title="Beta feature"
-                >
-                  This connector is in beta. Beta features are subject to change
-                  and are not covered by the support SLA of general release (GA)
-                  features. Elastic plans to promote this feature to GA in a
-                  future release
-                </EuiCallOut>
-              </EuiPanel>
-            </EuiFlexItem>
+                  <EuiText size="s">
+                    Want to self-host this native connector? Convert it to a{" "}
+                    <EuiLink href="#" target="_blank">
+                      connector client
+                    </EuiLink>
+                    , to be self-managed on your own infrastructure. You ll need
+                    to convert this connector if you want to customize the code
+                    using our Python framework
+                    <EuiSpacer size="s" />
+                    <EuiButton
+                      onClick={() => {
+                        // <pathname>?sort=asc
+                        router.push(
+                          pathname + "?" + createQueryString("sort", "asc")
+                        );
+                      }}
+                    >
+                      Convert connector
+                    </EuiButton>
+                  </EuiText>
+                </EuiPanel>
+              </EuiFlexItem>
+            )}
+            {searchParams.has("isBeta") && (
+              <EuiFlexItem grow={false}>
+                <EuiPanel hasBorder hasShadow={false}>
+                  <EuiCallOut
+                    color="warning"
+                    iconType="beaker"
+                    title="Beta feature"
+                  >
+                    This connector is in beta. Beta features are subject to
+                    change and are not covered by the support SLA of general
+                    release (GA) features. Elastic plans to promote this feature
+                    to GA in a future release
+                  </EuiCallOut>
+                </EuiPanel>
+              </EuiFlexItem>
+            )}
           </EuiFlexGroup>
         </EuiFlexItem>
       </EuiFlexGroup>
