@@ -13,7 +13,7 @@ import {
   EuiButton,
 } from '@elastic/eui';
 
-const GetStartedPanel = ({ heading, description, slug }) => {
+const GetStartedPanel = ({ heading, description, slug }: { heading: string, description: string, slug: string }) => {
   const router = useRouter();
   return (
     <EuiPanel hasBorder>

@@ -20,6 +20,11 @@ export const SideNav = () => {
 
   const sideNavItems = [
     {
+      name: "Home",
+      id: htmlIdGenerator('basicExample')(),
+      onClick: () => router.push('/'),
+    },
+    {
       name: 'Content',
       id: 'content',
       items: [
@@ -98,22 +103,6 @@ export const SideNav = () => {
         {
           name: "Workplace Search",
           id: 'workplace-search',
-          onClick: () => router.push('/'),
-        },
-      ]
-    },
-    {
-      name: 'Settings',
-      id: 'settings',
-      items: [
-        {
-          name: "Trained Models",
-          id: 'trained-models',
-          onClick: () => router.push('/trained-models'),
-        },
-        {
-          name: "Synonyms",
-          id: 'synonyms',
           onClick: () => router.push('/'),
         },
       ]
