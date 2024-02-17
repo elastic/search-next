@@ -2,8 +2,10 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import { useSearchParams } from 'next/navigation'
 
+import CustomEuiProvider from '@/ui/utils/custom-eui-provider'
+import { EmotionCacheProvider } from '@/ui/utils/emotion-cache-provider'
+
 import {
-  EuiProvider,
   EuiHeader,
   EuiFlexGroup,
   EuiFlexItem,
@@ -111,7 +113,11 @@ const RootLayout = ({ pageData, children }) => {
   const urlPageTitle = searchParams.get('title');
 
   return (
-    <EuiProvider colorMode="light">
+    <EmotionCacheProvider
+      options={{ key: 'search-next' }}
+      providerCacheKey="cache"
+      providerComponent={CustomEuiProvider}
+    >
       <EuiHeader
         theme="dark"
         sections={[
@@ -166,7 +172,7 @@ const RootLayout = ({ pageData, children }) => {
         </EuiPageTemplate.Section>
       </EuiPageTemplate>
       )
-    </EuiProvider>
+    </EmotionCacheProvider>
   )
 }
 
