@@ -14,7 +14,7 @@ export default function APIIndex() {
         </h3>
       </EuiTitle>
 
-      <EuiButton onClick={() => router.push('/content/indices')}>View index</EuiButton>
+      <EuiButton onClick={() => router.push('/content/indices/overview')}>View index</EuiButton>
     </>
   )
 }
