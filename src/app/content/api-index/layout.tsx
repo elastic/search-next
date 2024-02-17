@@ -9,17 +9,13 @@ export default function ContentLayout({ children }: { children: React.ReactNode 
   return (
     <>
       <EuiPageTemplate.Header
-        pageTitle={"Connectors"}
+        pageTitle={"Elasticsearch indices"}
         rightSideItems={[
           <EuiButton
             fill
             iconSide='left'
             iconType='plusInCircle'
-          >
-            New Web Crawler
-          </EuiButton>,
-          <EuiButton>New Native Connector</EuiButton>,
-          <EuiButton>New Connector Client</EuiButton>,
+          >Create a new index</EuiButton>
         ]}
       />
       <EuiPageTemplate.Section>

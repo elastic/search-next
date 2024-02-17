@@ -4,6 +4,6 @@ import React from 'react';
 
 export default function APIIndex() {
   return (
-    <>Connectors page</>
+    <>Connectors overview page</>
   )
 }

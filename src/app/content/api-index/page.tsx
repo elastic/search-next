@@ -4,6 +4,6 @@ import React from 'react';
 
 export default function APIIndex() {
   return (
-    <>API Index page</>
+    <>API Index overview page</>
   )
 }

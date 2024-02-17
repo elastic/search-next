@@ -1,15 +1,18 @@
 'use client';
-
+// Main Wrapping Layout
+// Includes Top Bars and Sidenav
+//
 import React from 'react';
 //
 import '@elastic/eui/dist/eui_theme_light.css';
 import {
-  EuiPanel,
-  EuiSpacer,
-  EuiText
+  EuiHeader,
+  EuiHeaderLogo,
+  EuiPageTemplate
 } from '@elastic/eui';
 import { EmotionCacheProvider } from '@/utils/emotion-cache-provider';
 import { CustomEuiProvider } from '@/utils/custom-eui-provider';
+import { SideNav } from './components';
 //
 //
 export default function Layout({
@@ -25,12 +28,29 @@ export default function Layout({
           providerCacheKey="cache"
           providerComponent={CustomEuiProvider}
         >
-          <EuiSpacer size="s" />
-          <EuiPanel color='subdued'>
+          <EuiHeader
+            theme="dark"
+            sections={[
+              {
+                items: [
+                  <EuiHeaderLogo>Elastic</EuiHeaderLogo>
+                ]
+              }
+            ]}
+          />
+          <EuiHeader />
+          <EuiPageTemplate
+            restrictWidth={false}
+            panelled={true}
+          >
+            <EuiPageTemplate.Sidebar sticky>
+              <SideNav />
+            </EuiPageTemplate.Sidebar>
             {children}
-          </EuiPanel>
+          </EuiPageTemplate>
         </EmotionCacheProvider>
       </body>
     </html>
   );
 }
+
