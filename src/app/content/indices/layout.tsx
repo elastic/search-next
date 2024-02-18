@@ -47,6 +47,12 @@ export default function IndicesLayout({ children }: { children: React.ReactNode 
             isSelected: checkParams("pipelines"),
             onClick: () => handleClick("/pipelines"),
           },
+          {
+            id: 'configuration',
+            label: 'Configuration',
+            isSelected: checkParams("configuration"),
+            onClick: () => handleClick("/configuration"),
+          },
         ]}
       />
       <EuiPageTemplate.Section>
