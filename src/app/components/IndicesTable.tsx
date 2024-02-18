@@ -1,10 +1,10 @@
-// Main table for content sources
-import React, { useState } from 'react'
+'use client';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
+import { IndexType } from "@/lib/definitions"
 import {
   EuiBasicTable,
-  EuiButton,
   EuiBadge,
   EuiHealth,
   EuiLink,
@@ -12,28 +12,29 @@ import {
   EuiSpacer,
 } from '@elastic/eui';
 
-import { slugify } from '@/utils/helpers';
-import { INDEX_TABLE_ITEMS } from '@/data/indexTableItems';
 
+export const TableIndices = ({ items }: { items: Array }) => {
 
-
-export const TableIndices = () => {
-  const [pageIndex, setPageIndex] = useState(0);
-  const [pageSize, setPageSize] = useState(25);
-
-  const router = useRouter();
+  const totalItemCount = items.length;
+  const pagination = {
+    pageIndex: 0,
+    pageSize: 25,
+    totalItemCount,
+    pageSizeOptions: [25, 50, 100, 0],
+    showPerPageOptions: true,
+  };
 
   const viewIndex = (item) => {
-    router.push(`${slugify(item.type)}/overview?title=${item.name}`)
+    // router.push(`${slugify(item.type)}/overview?title=${item.name}`)
+    console.log('View ', item);
   }
 
   const deleteIndex = (item) => {
-    console.log(item)
+    console.log('Delete ', item)
   }
 
 
   const columns = [
-
     {
       field: 'name',
       name: 'Name',
@@ -108,12 +109,10 @@ export const TableIndices = () => {
       />
       <EuiSpacer size="m" />
       <EuiBasicTable
-        items={INDEX_TABLE_ITEMS}
+        items={items}
         columns={columns}
       />
     </>
   )
 
 }
-
-
