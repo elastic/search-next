@@ -1,7 +1,7 @@
 'use client'
 import React from 'react';
 //
-import { useParams, useRouter } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 //
 import {
   EuiSideNav,
@@ -16,7 +16,11 @@ import {
 export const SideNav = () => {
 
   const router = useRouter();
-  const params = useParams();
+  const pathName = usePathname();
+
+  const checkParams = (path: string) => {
+    return pathName?.includes(path);
+  }
 
   const sideNavItems = [
     {
@@ -31,6 +35,7 @@ export const SideNav = () => {
         {
           name: "Indices",
           id: htmlIdGenerator('basicExample')(),
+          isSelected: checkParams('/indices/'),
           onClick: () => router.push('/content/api-index'),
         },
         {

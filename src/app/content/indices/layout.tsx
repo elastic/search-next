@@ -7,14 +7,14 @@ import { EuiButton, EuiPageTemplate } from '@elastic/eui';
 
 export default function IndicesLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
-  const params = usePathname();
+  const pathName = usePathname();
 
   const handleClick = (path: string) => {
     router.push(`/content/indices${path}`);
   }
 
-  const checkParams = (path: string) => {
-    return params?.includes(path);
+  const checkPathname = (path: string) => {
+    return pathName?.includes(path);
   }
 
 
@@ -26,31 +26,31 @@ export default function IndicesLayout({ children }: { children: React.ReactNode 
           {
             id: 'overview',
             label: 'Overview',
-            isSelected: checkParams("overview"),
+            isSelected: checkPathname("overview"),
             onClick: () => handleClick("/overview"),
           },
           {
             id: 'documents',
             label: 'Documents',
-            isSelected: checkParams("documents"),
+            isSelected: checkPathname("documents"),
             onClick: () => handleClick("/documents"),
           },
           {
             id: 'mappings',
             label: 'Mappings',
-            isSelected: checkParams("mappings"),
+            isSelected: checkPathname("mappings"),
             onClick: () => handleClick("/mappings"),
           },
           {
             id: 'pipelines',
             label: 'Pipelines',
-            isSelected: checkParams("pipelines"),
+            isSelected: checkPathname("pipelines"),
             onClick: () => handleClick("/pipelines"),
           },
           {
             id: 'configuration',
             label: 'Configuration',
-            isSelected: checkParams("configuration"),
+            isSelected: checkPathname("configuration"),
             onClick: () => handleClick("/configuration"),
           },
         ]}
