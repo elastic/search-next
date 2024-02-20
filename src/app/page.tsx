@@ -1,20 +1,19 @@
+'use client'
 import React from 'react';
-import { useRouter } from 'next/router';
-
-import { RootLayout } from '@/components';
+//
+import { useRouter } from 'next/navigation';
+//
 import {
-  EuiButton,
-  EuiText,
-  EuiTitle,
   EuiFlexGroup,
   EuiFlexItem,
+  EuiTitle,
   EuiPanel,
+  EuiText,
   EuiSpacer,
-  EuiStat,
-  EuiHorizontalRule,
-} from "@elastic/eui";
+  EuiButton,
+} from '@elastic/eui';
 
-const GetStartedPanel = ({ heading, description, slug }) => {
+const GetStartedPanel = ({ heading, description, slug }: { heading: string, description: string, slug: string }) => {
   const router = useRouter();
   return (
     <EuiPanel hasBorder>
@@ -29,16 +28,9 @@ const GetStartedPanel = ({ heading, description, slug }) => {
   )
 }
 
-export default function GettingStarted() {
-
-
-  const DATA = {
-    pageTitle: "Get started with Elasticsearch",
-    rightSideItems: [
-    ]
-  }
+export default function Home() {
   return (
-    <RootLayout pageData={DATA}>
+    <>
       <EuiFlexGroup direction="column">
         <EuiFlexItem><EuiTitle size="s"><h3>Ingest your content</h3></EuiTitle></EuiFlexItem>
         <EuiFlexGroup>
@@ -62,8 +54,7 @@ export default function GettingStarted() {
           </EuiFlexItem>
         </EuiFlexGroup>
       </EuiFlexGroup>
+    </>
 
-
-    </RootLayout>
   )
 }

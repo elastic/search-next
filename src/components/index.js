@@ -1,4 +1,3 @@
-export { RootLayout } from './RootLayout';
 export { MappingView } from './MappingView/MappingView';
 export { TableIndices } from './TableIndices/TableIndices';
 export { StatPanel, StatPanels } from './Panels';
