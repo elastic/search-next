@@ -1,3 +1,4 @@
+'use client'
 import { EuiFlexGroup, EuiFlexItem, EuiPanel, EuiStat } from '@elastic/eui';
 
 export const StatPanel = ({ title, description, half }) => (
