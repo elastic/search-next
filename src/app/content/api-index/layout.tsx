@@ -12,6 +12,7 @@ export default function ContentLayout({ children }: { children: React.ReactNode 
         pageTitle={"Elasticsearch indices"}
         rightSideItems={[
           <EuiButton
+            key="create"
             fill
             iconSide='left'
             iconType='plusInCircle'

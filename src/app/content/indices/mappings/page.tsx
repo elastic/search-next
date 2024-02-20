@@ -17,10 +17,7 @@ export default function APIIndex() {
         <EuiSearchBar />
       </EuiFlexItem>
       <EuiFlexItem>
-        <EuiBasicTable
-          columns={columns}
-          items={""}
-        />
+        Table
       </EuiFlexItem>
 
     </EuiFlexGroup>

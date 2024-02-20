@@ -15,6 +15,7 @@ export default function ContentLayout({ children }: { children: React.ReactNode 
         pageTitle={"Web Crawlers"}
         rightSideItems={[
           <EuiButton
+            key="create"
             fill
             iconSide='left'
             iconType='plusInCircle'

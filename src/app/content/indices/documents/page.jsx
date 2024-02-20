@@ -14,6 +14,7 @@ import {
 import { documents } from '@/data/documents';
 import { DocumentItem } from './ui/documentItem';
 //
+
 const DocumentViewTable = () => {
   const columns = [
     {
@@ -26,16 +27,17 @@ const DocumentViewTable = () => {
 
   const items = () => {
     documents.map((doc) => (
-      <EuiFlexItem>
-        <DocumentItem doc={doc} key={doc.id} />
+      <EuiFlexItem key={doc.id}>
+        <DocumentItem doc={doc} />
       </EuiFlexItem>
     ))
   }
+
   return (
     <EuiFlexGroup direction="column" gutterSize="s">
       {documents.map((doc) => (
-        <EuiFlexItem>
-          <DocumentItem doc={doc} key={doc.id} />
+        <EuiFlexItem key={doc.id}>
+          <DocumentItem doc={doc} />
         </EuiFlexItem>
       ))
       }
@@ -61,9 +63,6 @@ export default function Documents() {
       <EuiSpacer size="m" />
       <EuiText size="xs">Showing 25 of 10,000. Search results maxed at 10,000 documents.</EuiText>
       <EuiSpacer size="m" />
-      <DocumentViewTable />
-
-
     </>
   )
 }

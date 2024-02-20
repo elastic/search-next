@@ -2,25 +2,11 @@
 //
 import React from 'react';
 //
-import { EuiButton, EuiPageTemplate } from '@elastic/eui';
-
-export default function ContentLayout({ children }: { children: React.ReactNode }) {
+export default function ContentLayout() {
 
   return (
     <>
-      <EuiPageTemplate.Header
-        pageTitle={"Elasticsearch indices"}
-        rightSideItems={[
-          <EuiButton
-            fill
-            iconSide='left'
-            iconType='plusInCircle'
-          >Create a new index</EuiButton>
-        ]}
-      />
-      <EuiPageTemplate.Section>
-        {children}
-      </EuiPageTemplate.Section>
+      Create crawler
     </>
   )
 }

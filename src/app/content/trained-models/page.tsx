@@ -8,7 +8,6 @@ import {
   EuiSearchBar
 } from '@elastic/eui'
 
-import { ModelTable, RootLayout } from '@/components'
 
 const DATA = {
   pageTitle: "Trained Models",
@@ -23,9 +22,7 @@ export default function Overview() {
 
 
   return (
-    <RootLayout
-      pageData={DATA}
-    >
+    <>
       <EuiFlexGroup gutterSize="l" direction='column'>
         <EuiFlexItem grow={false}>
           <EuiPanel color='subdued' grow={false}>
@@ -36,9 +33,9 @@ export default function Overview() {
           <EuiSearchBar query="" />
         </EuiFlexItem>
         <EuiFlexItem>
-          <ModelTable />
+          Table
         </EuiFlexItem>
       </EuiFlexGroup>
-    </RootLayout>
+    </>
   )
 }

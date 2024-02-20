@@ -11,8 +11,8 @@ export default function ContentLayout({ children }: { children: React.ReactNode 
       <EuiPageTemplate.Header
         pageTitle={"Connectors"}
         rightSideItems={[
-          <EuiButton>New Native Connector</EuiButton>,
-          <EuiButton>New Connector Client</EuiButton>,
+          <EuiButton key="native">New Native Connector</EuiButton>,
+          <EuiButton key="connector">New Connector Client</EuiButton>,
         ]}
       />
       <EuiPageTemplate.Section>

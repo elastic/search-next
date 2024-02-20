@@ -10,7 +10,7 @@ import {
   EuiTitle,
 } from '@elastic/eui';
 
-export const DocumentItem = ({ doc }: { doc: object }) => {
+export const DocumentItem = ({ doc }) => {
   const docColumns = [
     {
       id: 'type',

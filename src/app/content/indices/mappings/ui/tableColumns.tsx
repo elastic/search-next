@@ -1,4 +1,9 @@
 import { faker } from '@faker-js/faker';
+import {
+  EuiButton,
+  EuiText,
+  EuiPopover,
+} from '@elastic/eui';
 
 const DOC_COUNT_OPTIONS = { min: 990, max: 1000 }
 
@@ -45,23 +50,6 @@ export const columns = [
   {
     field: 'field_name',
     name: 'Field Name',
-    render: (value) => {
-      if (value === 'summary' && !!fieldData) {
-        return (
-          <EuiPopover
-            button={<EuiButton size="s" color="success" iconSide='right' iconType='sparkles' onClick={handleActionClick}>{value}</EuiButton>}
-            isOpen={isPopoverOpen}
-            closePopover={closePopover}
-          >
-            <EuiText>
-              <p>Popover content that&rsquo;s wider than the default width</p>
-            </EuiText>
-            <EuiButton onClick={handleSemanticClick}>Add semantic_text</EuiButton>
-          </EuiPopover>)
-      } else {
-        return <EuiText size='s'>{value}</EuiText>
-      }
-    }
   },
   {
     field: 'field_type',

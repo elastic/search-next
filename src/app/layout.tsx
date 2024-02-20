@@ -33,7 +33,7 @@ export default function Layout({
             sections={[
               {
                 items: [
-                  <EuiHeaderLogo>Elastic</EuiHeaderLogo>
+                  <EuiHeaderLogo key="elastic">Elastic</EuiHeaderLogo>
                 ]
               }
             ]}
