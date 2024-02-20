@@ -35,22 +35,25 @@ export const SideNav = () => {
         {
           name: "Indices",
           id: htmlIdGenerator('basicExample')(),
-          isSelected: checkParams('/indices/'),
+          isSelected: (checkParams('/content/api-index') || checkParams('/content/indices/')),
           onClick: () => router.push('/content/api-index'),
         },
         {
           name: "Connectors",
           id: htmlIdGenerator('basicExample')(),
+          isSelected: checkParams('/content/connectors'),
           onClick: () => router.push('/content/connectors'),
         },
         {
           name: "Web Crawlers",
           id: htmlIdGenerator('basicExample')(),
+          isSelected: checkParams('/content/crawlers'),
           onClick: () => router.push('/content/crawlers'),
         },
         {
           name: "Settings",
           id: htmlIdGenerator('basicExample')(),
+          isSelected: checkParams('/content/settings'),
           onClick: () => router.push('/content/settings'),
         },
 

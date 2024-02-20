@@ -13,7 +13,7 @@ import {
 } from '@elastic/eui';
 
 
-export const TableIndices = ({ items }: { items: Array }) => {
+export const IndicesTable = ({ items }: { items: Array }) => {
 
   const totalItemCount = items.length;
   const pagination = {

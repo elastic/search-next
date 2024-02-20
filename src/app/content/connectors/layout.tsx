@@ -11,13 +11,6 @@ export default function ContentLayout({ children }: { children: React.ReactNode 
       <EuiPageTemplate.Header
         pageTitle={"Connectors"}
         rightSideItems={[
-          <EuiButton
-            fill
-            iconSide='left'
-            iconType='plusInCircle'
-          >
-            New Web Crawler
-          </EuiButton>,
           <EuiButton>New Native Connector</EuiButton>,
           <EuiButton>New Connector Client</EuiButton>,
         ]}

@@ -7,3 +7,9 @@ export type IndexType = {
   docsCount: number,
 }
 
+export type SplitPanelType = {
+  title: String,
+  summary: String,
+  extraSummary: React.ReactNode,
+}
+
