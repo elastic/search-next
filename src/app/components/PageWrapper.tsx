@@ -1,3 +1,4 @@
+/** @jsxImportSource @emotion/react */
 'use client';
 import React from 'react';
 import { EuiHeader, EuiPageTemplate, EuiHeaderLogo } from '@elastic/eui'
