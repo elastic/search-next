@@ -6,7 +6,6 @@ const documents = []
 
 for (let i = 0; i < NUM_OF_DOCS; i++) {
   documents.push(
-
     {
       id: faker.string.alphanumeric(16),
       title: faker.commerce.productName(),
